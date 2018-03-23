@@ -28,13 +28,7 @@ var app = express();
 
 // Database setup
 
-connection.query('SELECT * FROM Pet', function(err, results) {
-  if(err){
-    console.log(err);
-    return;
-  }
-  console.log(results);
-});
+
 // Configuration
 
 app.use(express.bodyParser());
@@ -42,12 +36,23 @@ app.use(express.bodyParser());
 // // Main route sends our HTML file
 //
 app.get('/', function(req, res) {
-    res.sendfile(__dirname + '/index.html');
+  connection.connect();
+
+  connection.query('SELECT * FROM Pet', function(err, results) {
+    if(err){
+      console.log(err);
+      return;
+    }
+    console.log(results);
+
+  });
+  
+  connection.end();
 });
 //
 // // Update MySQL database
 //
-app.post('/users', function (req, res) {
+app.post('/pet', function (req, res) {
     connection.query('INSERT INTO pet SET ?', req.body,
         function (err, result) {
             if (err) throw err;
