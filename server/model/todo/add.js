@@ -8,7 +8,7 @@ module.exports = (param) => {
   const title = param.title;
 
   return Promise.using(db(), conn => {
-    const sql = `insert into todo (title) values(?)`;
+    const sql = `INSERT INTO Pet (title) values(?)`;
     return conn.queryAsync(sql, [title]);
   });
 };
