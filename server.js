@@ -1,69 +1,101 @@
-// Module dependencies
-
-var express    = require('express'),
-    router = express.Router(),
-    mysql      = require('mysql');
-    // module.exports = server
-
-
-// Application initialization
-
-var connection = mysql.createConnection({
-    host: "192.17.90.133",
-	  user: "servernotfound_test",
-    password: "YauU.f_%Qr6^",
-    database: "servernotfound_data",
-    port: 3306
-});
-
-// connection.connect(function(err) {
-//   if (err){
-//     consol.log('error ??');
-//     return;
-//   }
-//   console.log("Connected!");
-// });
-
+var express = require('express');
+var mysql = require('mysql');
 var app = express();
 
-// Database setup
-
-
-// Configuration
-
-app.use(express.bodyParser());
-//
-// // Main route sends our HTML file
-//
-app.get('/', function(req, res) {
-  connection.connect();
-
-  connection.query('SELECT * FROM Pet', function(err, results) {
-    if(err){
-      console.log(err);
-      return;
-    }
-    console.log(results);
-
-  });
-  
-  connection.end();
+var connection = mysql.createPool({
+  connectionLimit:50,
+  host: "192.17.90.133",
+  user: "servernotfound_u",
+  password: "laozhuquanxidi1",
+  database: "servernotfound_data"
 });
-//
-// // Update MySQL database
-//
-app.post('/pet', function (req, res) {
-    connection.query('INSERT INTO pet SET ?', req.body,
-        function (err, result) {
-            if (err) throw err;
-            res.send('User added to database with ID: ' + result.insertId);
+
+connection.getConnection(function(error){
+  if(error){
+    console.log('connect to database error');
+  }else{
+    console.log('Connected to database');
+  }
+});
+app.get('/get_all_pets',function(req,resp){
+  req.params
+  connection.getConnection(function(error,tempCont){
+    if(error){
+      tempCont.release();
+      console.log('Error in app get');
+    }else{
+      console.log('connect app get');
+      tempCont.query("SELECT * FROM ?",function(error,results){
+        tempCont.release();
+        if(error){
+          console.log('error in query');
+        }else{
+          resp.json(results);
         }
-    );
-});
+      })
+    }
+  });
+})
+var string = '/get_kind/:cat'
+app.get(string,function(req,resp){
+  var taskid = req.params.taskid;
+  console.log(taskid);
+  connection.getConnection(function(error,tempCont){
+    if(error){
+      tempCont.release();
+      console.log('Error in app get');
+    }else{
+      console.log('connect app get');
+      tempCont.query("SELECT * FROM Post WHERE text LIKE '%cat%' ",function(error,results){
+        tempCont.release();
+        if(error){
+          console.log('error in query');
+        }else{
+          resp.send(results);
+        }
+      })
+    }
+  });
+})
 
-// Begin listening
+app.get('/get_all_users',function(req,resp){
+  connection.getConnection(function(error,tempCont){
+    if(error){
+      tempCont.release();
+      console.log('Error in app get');
+    }else{
+      console.log('connect app get');
+      tempCont.query("SELECT * FROM User",function(error,results){
+        tempCont.release();
+        if(error){
+          console.log('error in query');
+        }else{
+          resp.render()
+          // resp.json(results);
+        }
+      })
+    }
+  });
+})
 
-app.listen(7007);
-connection.end();
+app.get('/get_all_posts',function(req,resp){
+  connection.getConnection(function(error,tempCont){
+    if(error){
+      tempCont.release();
+      console.log('Error in app get');
+    }else{
+      console.log('connect app get');
+      tempCont.query("SELECT * FROM Post",function(error,results){
+        tempCont.release();
+        if(error){
+          console.log('error in query');
+        }else{
+          resp.json(results);
+        }
+      })
+    }
+  });
+})
 
-console.log("Express server listening on port %d in %s mode",100, app.settings.env);
+app.listen(1350)
+
