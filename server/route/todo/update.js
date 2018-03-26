@@ -17,7 +17,7 @@ module.exports = (req, res) => {
     res.send({
       data: data,
       status: {
-        code: 0,
+        code: 200,
         msg: 'ok'
       }
     })

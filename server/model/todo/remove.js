@@ -8,7 +8,7 @@ module.exports = (param) => {
   const todoId = param.todoId;
 
   return Promise.using(db(), conn => {
-    const sql = `delete from todo where id=?`;
+    const sql = 'DELETE FROM Pet WHERE PID=?';
     return conn.queryAsync(sql, [todoId]);
   });
 };
