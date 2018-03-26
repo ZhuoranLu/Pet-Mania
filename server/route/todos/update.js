@@ -7,7 +7,8 @@ const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
   const todoId = req.params.todo_id;
-  const done = req.body.done;
+  const done = req.params.todo_id2;
+  // const done = req.body.done;
 
   Promise.resolve()
   .then(() => {
@@ -28,6 +29,7 @@ module.exports = (req, res) => {
 };
 
 function updateTodo(id, done) {
+  console.log("wocaonima")
   return todoDao.update({
     todoId: id,
     done: done
