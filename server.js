@@ -17,27 +17,26 @@ connection.getConnection(function(error){
     console.log('Connected to database');
   }
 });
-app.get('/get_all_pets',function(req,resp){
-  req.params
-  connection.getConnection(function(error,tempCont){
-    if(error){
-      tempCont.release();
-      console.log('Error in app get');
-    }else{
-      console.log('connect app get');
-      tempCont.query("SELECT * FROM ?",function(error,results){
-        tempCont.release();
-        if(error){
-          console.log('error in query');
-        }else{
-          resp.json(results);
-        }
-      })
-    }
-  });
-})
-var string = '/get_kind/:cat'
-app.get(string,function(req,resp){
+// app.get('/get_all_pets',function(req,resp){
+//   connection.getConnection(function(error,tempCont){
+//     if(error){
+//       tempCont.release();
+//       console.log('Error in app get');
+//     }else{
+//       console.log('connect app get');
+//       tempCont.query("SELECT * FROM Pet",function(error,results){
+//         tempCont.release();
+//         if(error){
+//           console.log('error in query');
+//         }else{
+//           resp.json(results);
+//         }
+//       })
+//     }
+//   });
+// })
+
+app.get('/get_kind/:taskid',function(req,resp){
   var taskid = req.params.taskid;
   console.log(taskid);
   connection.getConnection(function(error,tempCont){
@@ -46,7 +45,9 @@ app.get(string,function(req,resp){
       console.log('Error in app get');
     }else{
       console.log('connect app get');
-      tempCont.query("SELECT * FROM Post WHERE text LIKE '%cat%' ",function(error,results){
+      tempCont.query("SELECT * FROM Post WHERE text LIKE '%"+taskid+"%' ",function(error,results){
+        console.log("laozhuquanxidi1")
+        console.log("SELECT * FROM Post WHERE text LIKE '%"+taskid+"%' ")
         tempCont.release();
         if(error){
           console.log('error in query');
@@ -79,6 +80,7 @@ app.get('/get_all_users',function(req,resp){
 })
 
 app.get('/get_all_posts',function(req,resp){
+
   connection.getConnection(function(error,tempCont){
     if(error){
       tempCont.release();
