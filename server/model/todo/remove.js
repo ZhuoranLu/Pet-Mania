@@ -1,7 +1,7 @@
 'use strict';
 
 const Promise = require('bluebird');
-
+console.log('remove')
 const db = require('../../config/db');
 
 module.exports = (param) => {

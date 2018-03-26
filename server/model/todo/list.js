@@ -5,7 +5,7 @@ const db = require('../../config/db');
 
 module.exports = () => {
   return Promise.using(db(), conn => {
-    const sql = `select * from todo`;
+    const sql = `SELECT * FROM Pet`;
     return conn.queryAsync(sql, []);
   });
 };
