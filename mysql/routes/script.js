@@ -47,7 +47,7 @@ router.get('/get_kind/:taskid',function(req,resp){
     }else{
       console.log('connect app get');
       tempCont.query("SELECT * FROM Post WHERE text LIKE '%"+taskid+"%' ",function(error,results){
-        console.log("laozhuquanxidi1")
+        // console.log("laozhuquanxidi1")
         console.log("SELECT * FROM Post WHERE text LIKE '%"+taskid+"%' ")
         tempCont.release();
         if(error){

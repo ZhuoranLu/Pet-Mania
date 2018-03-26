@@ -19,6 +19,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "expo": "^25.0.0",
     "express": "^3.21.2",
     "react": "16.2.0",
