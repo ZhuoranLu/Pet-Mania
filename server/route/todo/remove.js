@@ -10,9 +10,12 @@ module.exports = (req, res) => {
 
   Promise.resolve()
   .then(() => {
+    console.log("wocaonima")
+    console.log(removeTodo(todoId));
     return removeTodo(todoId);
   })
   .then((data) => {
+    // console.log(data);
     res.send({
       data: data,
       status: {

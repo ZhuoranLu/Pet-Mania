@@ -5,6 +5,8 @@ const Promise = require('bluebird');
 const db = require('../../config/db');
   // console.log("fk111");
 module.exports = (param) => {
+  console.log("param = "+param);
+
   const todoId = param.todoId;
   console.log('todoId'+todoId);
   const done = param.done;

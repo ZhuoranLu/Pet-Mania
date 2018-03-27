@@ -4,10 +4,31 @@ const express = require("express");
 const router = express.Router();
 module.exports = router;
 
+var bodyParser = require('body-parser')
+
+
+// 创建 application/json 解析
+var jsonParser = bodyParser.json()
+
+// 创建 application/x-www-form-urlencoded 解析
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+// POST /login 获取 URL编码的请求体
+// app.post('/login', urlencodedParser, function (req, res) {
+//   if (!req.body) return res.sendStatus(400)
+//   res.send('welcome, ' + req.body.username)
+// })
+
+// POST /api/users 获取 JSON 编码的请求体
+// app.post('/api/users', jsonParser, function (req, res) {
+//   if (!req.body) return res.sendStatus(400)
+//   // create user in req.body
+// })
+
 // console.log("wocaonima")
 
 router.route('/').get(require('./todos/list'));
-router.route('/').post(require('./todos/add'));
+router.route('/add').post(require('./todos/add'));
 //
 router.route('/single/:todo_id').get(require('./todos/single'));
 //two parameters to update

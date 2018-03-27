@@ -6,11 +6,17 @@ const todoDao = require('../../model/todo');
 const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
-  const title = req.body.title;
-
+  const name = req.body.name;
+  const PID = req.body.PID;
+  const DOB = req.body.DOB;
+  const breed = req.body.breed;
+  const kind =req.body.kind;
+  const gender = req.body.gender;
+  // console.log("todos add name = "+ name);
+  // console.log("req body.name = "+ req.body.name);
   Promise.resolve()
   .then(() => {
-    return addTodo(title);
+    return addTodo(name);
   })
   .then((data) => {
     res.send({
@@ -26,8 +32,13 @@ module.exports = (req, res) => {
   });
 };
 
-function addTodo(title) {
+function addTodo(name,PID,DOB,breed,kind,gender) {
   return todoDao.add({
-    title: title
+    name: name,
+    PID: PID,
+    DOB: DOB,
+    breed: breed,
+    kind: kind,
+    gender: gender
   })
 }

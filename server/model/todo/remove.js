@@ -9,7 +9,7 @@ module.exports = (param) => {
 
   return Promise.using(db(), conn => {
     const sql = 'DELETE FROM Pet WHERE PID=?';
-    console.log(conn.queryAsync(sql, [todoId]));
+    // console.log(conn.queryAsync(sql, [todoId]));
     return conn.queryAsync(sql, [todoId]);
   });
 };
