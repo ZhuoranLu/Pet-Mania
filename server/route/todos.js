@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 module.exports = router;
 
-console.log("wocaonima")
+// console.log("wocaonima")
 
 router.route('/').get(require('./todos/list'));
 router.route('/').post(require('./todos/add'));

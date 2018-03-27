@@ -4,7 +4,7 @@ const Promise = require('bluebird');
 
 const todoDao = require('../../model/todo');
 const sendError = require('../../helper/sendError');
-console.log("wocaonima meiyou sssss")
+// console.log("wocaonima meiyou sssss")
 
 module.exports = (req, res) => {
   const todoId = req.params.todo_id;
