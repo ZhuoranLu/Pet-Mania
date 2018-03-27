@@ -13,7 +13,8 @@ const local = {
   // port: 3306,
   // charset: 'utf8mb4'
   connectionLimit:50,
-  host: "192.17.90.133",
+  // host: "192.17.90.133",
+  host: "66.253.130.27",
   user: "servernotfound_wenxin",
   password: "wenxinquanyuzhoudiyi",
   database: "servernotfound_data"
