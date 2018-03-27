@@ -16,7 +16,7 @@ module.exports = (req, res) => {
   // console.log("req body.name = "+ req.body.name);
   Promise.resolve()
   .then(() => {
-    return addTodo(name);
+    return addTodo(name,PID,DOB,breed,kind,gender);
   })
   .then((data) => {
     res.send({
