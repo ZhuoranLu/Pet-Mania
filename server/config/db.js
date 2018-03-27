@@ -14,8 +14,8 @@ const local = {
   // charset: 'utf8mb4'
   connectionLimit:50,
   host: "192.17.90.133",
-  user: "servernotfound_zhuolao",
-  password: "zhuolaoquanxiaodiyi",
+  user: "servernotfound_wenxin",
+  password: "wenxinquanyuzhoudiyi",
   database: "servernotfound_data"
 };
 
