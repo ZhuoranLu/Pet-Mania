@@ -16,6 +16,6 @@ app.use('/todo', require('./route/todo'));
 app.use('/todos', require('./route/todos'));
 
 
-app.listen(5000, function () {
-  console.log('Example app listening on port 5000!');
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
 });
