@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>PetMania</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Neucha" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+	<script>
+		function urlencodeFormData(fd){
+		    var s = '';
+		    function encode(s){ return encodeURIComponent(s).replace(/%20/g,'+'); }
+		    for(var pair of fd.entries()){
+		        if(typeof pair[1]=='string'){
+		            s += (s?'&':'') + encode(pair[0])+'='+encode(pair[1]);
+		        }
+		    }
+		    return s;
+		}
+
+		function submitUpdate() {
+			console.log("Submit update!");
+
+			// var data = new FormData();
+			// data.append('name', $('#up1').val());
+			// data.append('PID', $('#up2').val());
+			var url = 'http://localhost:3000/todos/update/'+ $('#up2').val()+ '/' + $('#up1').val();
+			// console.log(url)
+			// alert(">>>")
+			var xhrupdate = new XMLHttpRequest();
+			xhrupdate.open('PUT', url, true);
+			xhrupdate.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+
+			xhrupdate.onreadystatechange = function () {
+				var res = JSON.parse(xhrupdate.responseText);
+				if (xhrupdate.readyState == 4 && xhrupdate.status == "200") {
+					alert("success")
+					console.log(res);
+				} else {
+					alert("Error")
+					console.log(res);
+				}
+			    // do something to response
+			    console.log(this.responseText);
+			};
+			xhrupdate.send(null);
+		}
+
+		function submitForm(){
+			console.log("Submit Form!")
+			var data = new FormData();
+			data.append('name', $('#sb1').val());
+			data.append('PID', parseInt($('#pettable tr:last th:nth-child(3)').text()) + 1);
+			data.append('breed', $('#sb4').val());
+			data.append('kind', $('#sb3').val());
+			data.append('gender', $('#sb5').val());
+			data.append('DOB', $('#sb2').val());
+			for (var value of data.values()) {
+				console.log(value); 
+			}
+			// alert(">>>>>>")
+			var xhrpost = new XMLHttpRequest();
+			xhrpost.open('POST', 'http://localhost:3000/todos/add', true);
+			xhrpost.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+
+			xhrpost.onreadystatechange = function () {
+				var res = JSON.parse(xhrpost.responseText);
+				if (xhrpost.readyState == 4 && xhrpost.status == "200") {
+					console.log(res);
+				} else {
+					console.log(res);
+				}
+			    // do something to response
+			    console.log(this.responseText);
+			};
+			xhrpost.send(urlencodeFormData(data));
+		}
+
+		function deleteEntry(id){
+			var url = "http://localhost:3000/todos/remove/"+id;
+			console.log("Removing "+ url)
+			var xhr = new XMLHttpRequest();
+			xhr.open("DELETE", url, true);
+			xhr.onload = function () {
+				var users = JSON.parse(xhr.responseText);
+				if (xhr.readyState == 4 && xhr.status == "200") {
+					console.table(users);
+					console.log(users);
+				} else {
+					console.error(users);
+					console.log("err");
+				}
+			}
+			xhr.send(null);
+			location.reload();
+		}
+
+		function loadDoc(x) {
+			if (x == null){
+				var url = 'http://localhost:3000/todos/pet';
+			}else{
+				console.log("Search for "+ x);
+				var url = 'http://localhost:3000/todos/single/'+x;
+				$('#pettable').empty();
+			}
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			  // document.getElementById("demo").innerHTML = this.responseText;
+				console.log("Loading")
+				var data = JSON.parse(this.responseText).data;
+				data.forEach((ele) => {
+			  	$('#pettable').append(`
+			  		<tr>
+			  			<th>${ele.name}</th>
+			  			<th>${ele.gender}</th>
+			  			<th>${ele.PID}</th>
+			  			<th>${ele.kind}</th>
+			  			<th>${ele.breed}</th>
+			  			<th><button id="deleteButton" onClick="deleteEntry(${ele.PID})">${"Delete"}</button></th>
+			  		</tr>`);
+				      })
+				      console.log(JSON.parse(this.responseText).data)
+				    }
+			};
+			xhttp.open("GET", url, true);
+			xhttp.send();
+		}
+		window.onload = loadDoc(null)
+	</script>
+</head>
+<body>
+	<div class="left">
+		<div class="wrap">
+		  	<div class="search">
+		      	<input type="text" id="sb" class="searchTerm" placeholder="Which pet are you looking for?">
+		      	<button type="button" onclick='loadDoc(document.getElementById("sb").value)' class="searchButton">
+		        	<i class="fa fa-search"></i>
+		     	</button>
+		   	</div>
+		</div>
+		<h1>My Pets</h1>
+		<table id="pettable">
+			<tr>
+				<th>Pet Name</th>
+				<th>Gender</th>
+				<th>ID</th>
+				<th>Kind</th>
+				<th>Breed</th>
+				<th>Action</th>
+			</tr>
+		</table>
+	</div>
+	<div class="right">
+		<h1>Add new pet</h1>
+    <div class="content">
+        <!-- <form method="post" class="contact1-form validate-form" onsubmit="return submitForm(this);"> -->
+        	<form onsubmit="return submitForm();">
+                <!-- <div class="wrap-input1 validate-input" data-validate = "Name is required"> -->
+                    <p class="pet-form"> Pet Name*</p>
+                    <input id="sb1" class="input1" type="text" name="name" placeholder="e.g. Wuxintong">
+                    <span class="shadow-input1"></span>
+                <!-- </div> -->
+
+                <!-- <div class="wrap-input1 validate-input" data-validate = "DOB is required"> -->
+                    <p class="pet-form"> Date of Birth*</p>
+                    <input id="sb2" class="input1" type="date" name="DOB">
+                    <span class="shadow-input1"></span>
+                <!-- </div> -->
+
+                <div class="wrap-input1 validate-input" data-validate = "Kind is required">
+                    <p class="pet-form"> Pet Kind*</p>
+                    <input id="sb3" class="input1" type="text" name="kind" placeholder="e.g. Cat">
+                    <span class="shadow-input1"></span>
+                </div>
+
+                <div class="wrap-input1 validate-input" data-validate = "Breed is required">
+                    <p class="pet-form"> Pet Breed*</p>
+                    <input id="sb4" class="input1" type="text" name="breed" placeholder="e.g. Ragdoll">
+                    <span class="shadow-input1"></span>
+                </div>
+
+                <div class="wrap-input1 validate-input" data-validate = "Gender is required" style="font-size: 18px">
+                    <p class="pet-form"> Pet Gender*</p>
+                    <select id="sb5" name="gender" form="genderform">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="container-contact1-form-btn">
+                    <button type="submit" class="contact1-form-btn">
+                        <span>
+                            Submit
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+        </form>
+	</div>
+	<h1 id="updateh1">Update pet info</h1>
+	<div class="content_update">
+        	<form onsubmit="return submitUpdate();">
+                <!-- <div class="wrap-input1 validate-input" data-validate = "Name is required"> -->
+                    <p class="pet-form"> Pet ID*</p>
+                    <input id="up1" class="input1" type="text" name="name" placeholder="e.g. 1">
+                    <span class="shadow-input1"></span>
+
+                <div class="wrap-input1 validate-input" data-validate = "Gender is required" style="font-size: 18px">
+                    <p class="pet-form"> Pet Name*</p>
+					<input id="up2" class="input1" type="text" name="name" placeholder="e.g. Wuxintong">
+                    <span class="shadow-input1"></span>
+                </div>
+
+                <div class="container-contact1-form-btn">
+                    <button type="submit" class="contact1-form-btn">
+                        <span>
+                            Submit
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+        </form>
+	</div>
+</body>

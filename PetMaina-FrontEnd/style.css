@@ -1,0 +1,302 @@
+.hero {
+  height: 100vh;
+  background-color: #00cec9;
+}
+
+.logo {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wave {
+  width: 100%;
+  height: 50vh;
+  margin-top: 50vh;
+}
+
+.wave path {
+  fill: rgba(85, 239, 196, 0.8);
+}
+
+.hero h1{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-family: 'Neucha', cursive;
+  font-size: 13em;
+}
+
+.wrapper { 
+  text-align: center;
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-signin {
+  /*max-width: 380px;*/
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.1);  
+  border-radius: 15px;
+  box-shadow: 3px 3px 5px 6px rgba(0,0,0,0.05);
+  font-family: 'Neucha', cursive;
+  width: 20vw;
+  min-width: 270px;
+}
+
+.form-signin .btn btn-lg btn-primary btn-block{
+  color: #fff;
+}
+
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 30px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+
+.form-signin .btn-primary{
+  background-color: #00cec9;
+  font-size: 1.7em;
+  border-color: #00cec9;
+  font-weight: 600;
+}
+
+.form-signin .btn-primary:hover{
+  background-color: #55efc4;
+  border-color: #55efc4;
+
+}
+
+.form-signin .btn-block{
+  margin-bottom: 10px;
+}
+
+ .form-signin .form-control @include box-sizing(border-box);
+
+ .form-signin .form-control &:focus {
+    z-index: 2;
+  }
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
+
+.left{
+  position: absolute;
+  background-color: #0b7dda;
+  width: 50%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  font-family: 'Neucha', cursive;
+  overflow: auto;
+}
+
+#pettable {
+  /*margin-top: 100px ;*/
+  color: white;
+  line-height: 2em;
+  font-size: 1.5em;
+  text-align: center;
+  position: absolute; 
+  top: 30%;
+  /*left: 50%;*/
+  /*transform: translateY(-50%);*/
+}
+
+.left h1{
+  color: white;
+  text-align: center;
+  position: absolute; 
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.right h1{
+  color: white;
+  text-align: center;
+  position: absolute; 
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#updateh1 {
+  color: white;
+  text-align: center;
+  position: absolute; 
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: 5%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+#deleteButton{
+  background-color: #0b7dda;
+  color: white;
+  border: none;
+  width: 50%;
+  font-size: 0.78em;
+}
+
+.right{
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background-color: #00cec9;
+  font-family: 'Neucha', cursive;
+}
+
+.content{
+  position: absolute; 
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.content_update{
+  position: absolute; 
+  top: 77%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
