@@ -29,7 +29,6 @@ module.exports = (req, res) => {
 };
 
 function updateTodo(id, done) {
-  console.log("wocaonima")
   return todoDao.update({
     todoId: id,
     done: done
