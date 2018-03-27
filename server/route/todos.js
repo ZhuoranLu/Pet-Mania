@@ -8,10 +8,10 @@ var bodyParser = require('body-parser')
 
 
 // 创建 application/json 解析
-var jsonParser = bodyParser.json()
+// var jsonParser = bodyParser.json()
 
-// 创建 application/x-www-form-urlencoded 解析
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+// // 创建 application/x-www-form-urlencoded 解析
+// var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // POST /login 获取 URL编码的请求体
 // app.post('/login', urlencodedParser, function (req, res) {
