@@ -6,21 +6,23 @@ const todoDao = require('../../model/todo');
 const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
-  const username = req.params.username;
-  const new_following = req.params.new_following;
+  const follower_username = req.params.follower_username;
+  const followee_username = req.params.followee_username;
+  console.log(followee_username)
+  console.log(follower_username)
   // const done = req.body.done;
 
   Promise.resolve()
   .then(() => {
-    return updateTodo(username, new_following);
+    return updateTodo(follower_username, followee_username);
   })
   .then((data) => {
-    res.send({
-      data: data,
-      status: {
-        code: 200,
-        msg: 'ok'
-      }
+    res.status(200).send({
+      data: data
+      // status: {
+      //   code: 200,
+      //   msg: 'ok'
+      // }
     })
   })
   .catch(err => {
@@ -28,9 +30,9 @@ module.exports = (req, res) => {
   });
 };
 
-function updateTodo(username, new_following) {
-  return todoDao.update({
-    username: username,
-    new_following: new_following
+function updateTodo(follower_username, followee_username) {
+  return todoDao.update_following({
+    follower_username: follower_username,
+    followee_username: followee_username
   })
 }

@@ -7,14 +7,15 @@ const db = require('../../config/db');
 module.exports = (param) => {
   console.log("param = "+param);
 
-  const username = param.username;
-  const new_following = param.new_following;
+  const follower_username = param.follower_username;
+  const followee_username = param.followee_username;
+  console.log("follower_username "+follower_username);
 
   return Promise.using(db(), conn => {
     // const sql = "INSERT INTO "
-    const sql = 'UPDATE User SET name = \''+username+'\' WHERE PID = '+ done;
+    const sql = 'INSERT INTO following (follower,followee) VALUES (?,?)'
     // const sql = `update todo set done=? where id=?`;
-    return conn.queryAsync(sql, [done, todoId]);
+    return conn.queryAsync(sql, [follower_username, followee_username]);
   });
 };
 

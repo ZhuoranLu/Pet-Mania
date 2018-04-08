@@ -12,9 +12,12 @@ module.exports = obj;
 // obj.pet = require('./todo/pet');
 
 obj.search_from_all = require('./todo/search_from_all')
-obj.update_followings = require('./todo/update_followings')
+
 obj.get_user_following = require('./todo/get_user_following')
 obj.get_user_likedPOID = require('./todo/get_user_likedPOID')
+obj.update_following = require('./todo/update_following')
+obj.update_user_info = require('./todo/update_user_info')
+
 obj.login_get_password = require('./todo/login_get_password')
 obj.login_check_username = require('./todo/login_get_password')
 obj.signup_user = require('./todo/signup_user')
