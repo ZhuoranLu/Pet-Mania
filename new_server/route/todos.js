@@ -33,6 +33,7 @@ router.route('/search_from_all/:from/:where/:like').get(require('./todos/search_
 router.route('/get_user_following/:username').get(require('./todos/get_user_following'))
 // router.route('/get_user_likedPOID/:username').get(require('./todos/get_user_likedPOID'))
 router.route('/login_get_password/:username').get(require('./todos/login_get_password'))
+// router.route('/login_check_username/:username').get(require('./todos/login_check_username'))
 router.route('/login_process/:username/:password').get(require('./todos/login_process'))
 
 //

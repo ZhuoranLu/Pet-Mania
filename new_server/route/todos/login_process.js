@@ -9,28 +9,32 @@ module.exports = (req, res) => {
   const username = req.params.username;
   const password = req.params.password;
   Promise.resolve()
+  // .then(() => {
+  //   return if_username_exists(username);
+  // })
   .then(() => {
     return get_result(username);
   })
   .then((data) => {
-    var ret =  (data[0].password == password);
-    return ret;
-  })
-  .then((ret) => {
-    if(ret){
-      res.send({
-        status: {
-          code: 200,
-          msg: 'ok'
-        }
+    if(!data[0]){
+      res.status(404).send({
+          massage: 'username not exist'
       })
     }
     else{
-      res.send({
-        status: {
-          code: 404,
-          msg: 'gg'
-        }
+      var ret =  (data[0].password == password);
+      return ret;
+    }
+  })
+  .then((ret) => {
+    if(ret){
+      res.status(200).send({
+          massage: 'you have successfully logged in'
+      })
+    }
+    else{
+      res.status(404).send({
+          massage: 'password not correct'
       })
     }
   })
@@ -38,7 +42,6 @@ module.exports = (req, res) => {
     sendError(res, err);
   });
 };
-
 function get_result(username) {
   // console.log(username)
   return todoDao.login_get_password({
