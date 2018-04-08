@@ -6,13 +6,13 @@ const todoDao = require('../../model/todo');
 const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
-  const todoId = req.params.todo_id;
-  const done = req.params.todo_id2;
+  const username = req.params.username;
+  const new_following = req.params.new_following;
   // const done = req.body.done;
 
   Promise.resolve()
   .then(() => {
-    return updateTodo(todoId, done);
+    return updateTodo(username, new_following);
   })
   .then((data) => {
     res.send({
@@ -28,9 +28,9 @@ module.exports = (req, res) => {
   });
 };
 
-function updateTodo(id, done) {
+function updateTodo(username, new_following) {
   return todoDao.update({
-    todoId: id,
-    done: done
+    username: username,
+    new_following: new_following
   })
 }

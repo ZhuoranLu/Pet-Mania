@@ -12,6 +12,9 @@ module.exports = (req, res) => {
     return get_result(username);
   })
   .then((data) => {
+    
+    var obj = JSON.parse(data);
+    console.log(obj)
     res.send({
       data: data,
       status: {

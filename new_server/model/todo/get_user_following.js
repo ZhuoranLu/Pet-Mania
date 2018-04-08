@@ -8,7 +8,7 @@ module.exports = (param) => {
 	const username = param.username;
   return Promise.using(db(), conn => {
     // console.log("wocaonima");
-    const sql = "SELECT following FROM User WHERE username = ?";
+    const sql = "SELECT following FROM following WHERE username = ?";
     return conn.queryAsync(sql, [username]);
   });
 };
