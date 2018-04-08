@@ -31,7 +31,7 @@ var bodyParser = require('body-parser')
 // router.route('/add').post(require('./todos/add'));
 router.route('/search_from_all/:from/:where/:like').get(require('./todos/search_from_all'))
 router.route('/get_user_following/:username').get(require('./todos/get_user_following'))
-router.route('/get_user_likedPOID/:username').get(require('./todos/get_user_likedPOID'))
+// router.route('/get_user_likedPOID/:username').get(require('./todos/get_user_likedPOID'))
 router.route('/login_get_password/:username').get(require('./todos/login_get_password'))
 router.route('/login_process/:username/:password').get(require('./todos/login_process'))
 

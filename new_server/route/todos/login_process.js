@@ -13,13 +13,26 @@ module.exports = (req, res) => {
     return get_result(username);
   })
   .then((data) => {
-    res.send({
-      data: data,
-      status: {
-        code: 200,
-        msg: 'ok'
-      }
-    })
+    var ret =  (data[0].password == password);
+    return ret;
+  })
+  .then((ret,data) => {
+    if(ret){
+      res.send({
+        status: {
+          code: 200,
+          msg: 'ok'
+        }
+      })
+    }
+    else{
+      res.send({
+        status: {
+          code: 404,
+          msg: 'gg'
+        }
+      })
+    }
   })
   .catch(err => {
     sendError(res, err);
@@ -27,8 +40,9 @@ module.exports = (req, res) => {
 };
 
 function get_result(username) {
-  console.log(username)
+  // console.log(username)
   return todoDao.login_get_password({
     username: username
   });
+
 }

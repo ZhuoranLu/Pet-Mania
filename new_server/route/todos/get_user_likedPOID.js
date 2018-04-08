@@ -11,6 +11,9 @@ module.exports = (req, res) => {
   .then(() => {
     return get_result(username);
   })
+  // .then((data) =>{
+    
+  // })
   .then((data) => {
     res.send({
       data: data,
@@ -26,7 +29,7 @@ module.exports = (req, res) => {
 };
 
 function get_result(username) {
-  console.log(username)
+  // console.log(username)
   return todoDao.get_user_likedPOID({
     username: username
   });
