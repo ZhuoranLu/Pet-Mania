@@ -16,7 +16,7 @@ module.exports = (req, res) => {
     var ret =  (data[0].password == password);
     return ret;
   })
-  .then((ret,data) => {
+  .then((ret) => {
     if(ret){
       res.send({
         status: {
