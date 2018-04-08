@@ -12,9 +12,7 @@ module.exports = (param) => {
 
   return Promise.using(db(), conn => {
     // const sql = "INSERT INTO "
-    const get_sql = "SELECT User FROM "
     const sql = 'UPDATE User SET name = \''+username+'\' WHERE PID = '+ done;
-    // console.log("sql = "+ sql)
     // const sql = `update todo set done=? where id=?`;
     return conn.queryAsync(sql, [done, todoId]);
   });
