@@ -32,11 +32,12 @@ var bodyParser = require('body-parser')
 router.route('/search_from_all/:from/:where/:like').get(require('./todos/search_from_all'))
 router.route('/get_user_following/:username').get(require('./todos/get_user_following'))
 router.route('/get_user_likedPOID/:username').get(require('./todos/get_user_likedPOID'))
+
 router.route('/login_get_password/:username').get(require('./todos/login_get_password'))
 // router.route('/login_check_username/:username').get(require('./todos/login_check_username'))
 router.route('/login_process/:username/:password').get(require('./todos/login_process'))
 router.route('/update_following/:follower_username/:followee_username').post(require('./todos/update_following'))
-router.route('/update_following/:username/:likedPOID').post(require('./todos/update_likedPOID'))
+router.route('/update_likedPOID/:username/:likedPOID').post(require('./todos/update_likedPOID'))
 router.route('/update_user_info/:username/:column/:new_value').put(require('./todos/update_user_info'))
 //
 // router.route('/single/:todo_id').get(require('./todos/single'));

@@ -9,7 +9,6 @@ module.exports = (param) => {
 
   const follower_username = param.follower_username;
   const followee_username = param.followee_username;
-  console.log("follower_username "+follower_username);
 
   return Promise.using(db(), conn => {
     // const sql = "INSERT INTO "

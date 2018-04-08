@@ -28,7 +28,7 @@ module.exports = (req, res) => {
 };
 
 function updateTodo(username, likedPOID) {
-  return todoDao.update_following({
+  return todoDao.update_likedPOID({
     username: username,
     likedPOID: likedPOID
   })

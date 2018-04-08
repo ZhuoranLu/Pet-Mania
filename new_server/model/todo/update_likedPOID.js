@@ -12,7 +12,9 @@ module.exports = (param) => {
 
   return Promise.using(db(), conn => {
     // const sql = "INSERT INTO "
-    const sql = 'INSERT INTO following (username,likedPOID) VALUES (?,?)'
+    // INSERT INTO card(cardno, cardnum) SELECT '111', '100' FROM DUAL WHERE NOT EXISTS(SELECT cardno FROM card WHERE cardno = '111');
+
+    const sql = 'INSERT INTO likedPOID (username,likedPOID) VALUES (?,?)'
     // const sql = `update todo set done=? where id=?`;
     return conn.queryAsync(sql, [username, likedPOID]);
   });
