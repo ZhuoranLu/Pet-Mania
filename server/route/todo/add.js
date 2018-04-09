@@ -7,7 +7,6 @@ const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
   const title = req.body.title;
-
   Promise.resolve()
   .then(() => {
     return addTodo(title);

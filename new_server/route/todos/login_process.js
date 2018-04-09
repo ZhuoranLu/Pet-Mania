@@ -18,7 +18,7 @@ module.exports = (req, res) => {
   .then((data) => {
     if(!data[0]){
       res.status(404).send({
-          massage: 'username not exist'
+          message: 'username not exist'
       })
     }
     else{
@@ -29,12 +29,12 @@ module.exports = (req, res) => {
   .then((ret) => {
     if(ret){
       res.status(200).send({
-          massage: 'you have successfully logged in'
+          message: 'you have successfully logged in'
       })
     }
     else{
       res.status(404).send({
-          massage: 'password not correct'
+          message: 'password not correct'
       })
     }
   })

@@ -21,7 +21,13 @@ const local = {
 };
 
 const pool = mysql.createPool(local);
-
+pool.getConnection(function(error){
+  if(error){
+    console.log('connect to database error');
+  }else{
+    console.log('Connected to database');
+  }
+});
 module.exports = () => {
   return pool.getConnectionAsync().disposer(function(connection) {
     connection.release();

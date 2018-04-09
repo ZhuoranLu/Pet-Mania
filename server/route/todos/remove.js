@@ -10,6 +10,7 @@ module.exports = (req, res) => {
 
   Promise.resolve()
   .then(() => {
+    // console.log(removeTodo(todoId));
     return removeTodo(todoId);
   })
   .then((data) => {
