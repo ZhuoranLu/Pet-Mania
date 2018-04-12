@@ -19,12 +19,9 @@ module.exports = (req, res) => {
     return addTodo(name,PID,DOB,breed,kind,gender);
   })
   .then((data) => {
-    res.send({
-      data: data,
-      status: {
-        code: 200,
-        msg: 'ok'
-      }
+    res.status(200).send({
+          message: 'you have successfully logged in'
+          data: data
     })
   })
   .catch(err => {
@@ -33,7 +30,7 @@ module.exports = (req, res) => {
 };
 
 function addTodo(name,PID,DOB,breed,kind,gender) {
-  return todoDao.add({
+  return todoDao.signup_user({
     name: name,
     PID: PID,
     DOB: DOB,
