@@ -12,10 +12,11 @@ module.exports = (param) => {
   const gender = param.gender;
   const name = param.name;
   const region = param.region;
-  const PetName = param.PetName;
-  const kind = param.kind;
-  const breed = param.breed;
-  const PetGender = param.PetGender;
+  const petName = param.petName;
+  const following = param.following;
+  const petKind = param.petKind;
+  const petBreed = param.petBreed;
+  const petGender = param.petGender;
   const createDate = param.createDate;
 
   // username: username,
@@ -33,20 +34,20 @@ module.exports = (param) => {
   //   INSERT INTO table_name (column1, column2, column3, ...)
   //   VALUES (value1, value2, value3, ...);
   return Promise.using(db(), conn => {
-    const sql = "INSERT INTO User (username,password,DOB,gender,name,region,following,createDate,petBreed,petKind,petGender,petName) VALUES ("
-              + username + ","
-              + password + ","
+    const sql = "INSERT INTO User (username,password,DOB,gender,createDate,name,region,following,petBreed,petKind,petGender,petName) VALUES ("
+              + "'" +username + "',"
+              + "'" +password + "',"
               + DOB + ","
-              + gender + ","
-              + name + ","
-              + region + ","
-              + " ,"
+              + "'" +gender + "',"
               + createDate + ","
-              + breed + ","
-              + kind + ","
-              +  PetGender+ ","
-              + PetName+ ")"
+              + "'" +name + "',"
+              + "'" +region + "',"
+              + "'" +following + "',"
+              + "'" +petBreed + "',"
+              + "'" +petKind + "',"
+              + "'" +petGender+ "',"
+              + "'" +petName+ "')"
     console.log(sql);
-    return conn.queryAsync(sql, [username,password,DOB,gender,name,region,following,createDate,petBreed,petKind,petGender,petName]);
+    return conn.queryAsync(sql, [username,password,DOB,gender,createDate,name,region,following,petBreed,petKind,petGender,petName]);
   });
 };
