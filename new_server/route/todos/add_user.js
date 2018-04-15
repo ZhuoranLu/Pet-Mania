@@ -16,12 +16,12 @@ module.exports = (req, res) => {
   const petKind =req.body.petKind;
   const petBreed = req.body.petBreed;
   const petGender = req.body.petGender;
+  const following = ""; //这边要改
+  //----Create current date
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
-  const following = ""; //这边要改
-  //----Create current date
   if(dd<10){
       dd='0'+dd;
   } 
