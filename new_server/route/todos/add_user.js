@@ -24,7 +24,6 @@ module.exports = (req, res) => {
   .then((data) => {
     res.status(200).send({
           message: 'success'
-          data: data
     })
   })
   .catch(err => {
