@@ -58,17 +58,7 @@ module.exports = (req, res) => {
 };
 
 function addTodo(username,password,DOB,gender,name,region,following,petName,petKind,petBreed,petGender,createDate) {
-  // var today = new Date();
-  // var dd = today.getDate();
-  // var mm = today.getMonth()+1; //January is 0!
-  // var yyyy = today.getFullYear();
-  // if(dd<10){
-  //     dd='0'+dd;
-  // } 
-  // if(mm<10){
-  //     mm='0'+mm;
-  // } 
-  // var createDate = yyyy + '-' + mm + '-' + dd;
+
   return todoDao.signup_user({
     username: username,
     password: password,
