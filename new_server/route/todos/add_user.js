@@ -20,7 +20,8 @@ module.exports = (req, res) => {
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
-  const following = "nothing";
+  const following = ""; //这边要改
+  //----Create current date
   if(dd<10){
       dd='0'+dd;
   } 
@@ -28,7 +29,8 @@ module.exports = (req, res) => {
       mm='0'+mm;
   } 
   var createDate = yyyy + '-' + mm + '-' + dd;
-  // var DOB = createDate;
+  //-----end
+  
   
   Promise.resolve()
   .then(() => {
