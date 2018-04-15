@@ -49,7 +49,7 @@ module.exports = (req, res) => {
   })
   .then((data) => {
     res.status(200).send({
-          message: 'success'
+          message: 'sign up success'
     })
   })
   .catch(err => {
