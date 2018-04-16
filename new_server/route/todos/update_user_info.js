@@ -15,13 +15,28 @@ module.exports = (req, res) => {
     return updateTodo(username, column, new_value);
   })
   .then((data) => {
-    res.status(200).send({
+    console.log(username);
+    console.log(column);
+    console.log(new_value);
+
+    // if(!data[0]){
+
+    // }
+    if(!username || ! column || !new_value){
+            res.status(404).send({
+          message: 'info not exist'
+      })
+          }else{
+                res.status(200).send({
       data: data
+      // message: 'update successfully'
       // status: {
       //   code: 200,
       //   msg: 'ok'
       // }
     })
+          }
+
   })
   .catch(err => {
     sendError(res, err);
