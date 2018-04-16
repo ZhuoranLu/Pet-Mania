@@ -40,7 +40,7 @@ module.exports = (req, res) => {
     if(!data[0]){
       return true;
     }
-    if(data[0].password){//通过todo里面的login_get_password看有没有passwordreturn 如果有则表示该username已被注册
+    if(data[0].password){
       res.status(404).send({
           message: 'username already exsits'
       })
