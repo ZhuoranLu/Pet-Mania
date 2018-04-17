@@ -6,11 +6,11 @@ const todoDao = require('../../model/todo');
 const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
-  const date = req.body.date;
-  const image = req.body.image;
+  const date = req.params.date;
+  const image = req.params.image;
   const text = req.body.text;
   const POID = req.body.POID;
-  const postBy = req.body.postBy;
+  const postBy = req.params.postBy;
 
   Promise.resolve()
   .then(() => {
