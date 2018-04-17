@@ -5,11 +5,10 @@ const Promise = require('bluebird');
 const db = require('../../config/db');
 
 module.exports = (param) => {
-	const username = param.username;
+	const follower = param.follower;
   return Promise.using(db(), conn => {
-    // console.log("wocaonima");
-    const sql = "SELECT followee FROM following WHERE follower = ?";
+    const sql = "SELECT COUNT(followee) FROM following WHERE follower = ?";
     console.log(sql);
-    return conn.queryAsync(sql, [username]);
+    return conn.queryAsync(sql, [follower]);
   });
 };
