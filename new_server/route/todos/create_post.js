@@ -6,10 +6,15 @@ const todoDao = require('../../model/todo');
 const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
-  const username = req.params.username;
+  const date = req.body.date;
+  const image = req.body.image;
+  const text = req.body.text;
+  const POID = req.body.POID;
+  const postBy = req.body.postBy;
+
   Promise.resolve()
   .then(() => {
-    return get_result(username);
+    return get_result(date,image,text,POID,postBy);
   })
   .then((data) => {
     
@@ -19,9 +24,14 @@ module.exports = (req, res) => {
   });
 };
 
-function get_result(username) {
-  console.log(username)
-  
+function get_result(date,image,text,POID,postBy) {
+  return todoDao.create_post({
+  date: req.body.date,
+  image: req.body.image,
+  text:req.body.text,
+  POID:req.body.POID,
+  postBy:req.body.postBy
+
   });
 
 }
