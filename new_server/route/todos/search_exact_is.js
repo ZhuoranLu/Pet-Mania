@@ -9,11 +9,11 @@ const sendError = require('../../helper/sendError');
 module.exports = (req, res) => {
   const from = req.params.from;
   const where = req.params.where;
-  const like = req.params.like;
+  const content = req.params.content;
 
   Promise.resolve()
   .then(() => {
-    return search_result(from,where,like);
+    return search_result(from,where,content);
   })
   .then((data) => {
     res.status(200).send({
@@ -25,10 +25,11 @@ module.exports = (req, res) => {
   });
 };
 
-function search_result(from,where,like) {
-  return todoDao.search_from_all({
+function search_result(from,where,content) {
+	console.log("wpocainima")
+  return todoDao.search_exact_is({
     from: from,
     where: where,
-    like: like
+    content: content
   });
 }
