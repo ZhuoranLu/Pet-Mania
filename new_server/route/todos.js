@@ -42,6 +42,7 @@ router.route('/add_user').post(require('./todos/add_user'))
 router.route('/update_user_info/:username/:column/:new_value').put(require('./todos/update_user_info'))
 router.route('/create_post/:date/:POID/:postBy').post(require('./todos/create_post'))
 router.route('/fetch_profile_post/:username').get(require('./todos/fetch_profile_post'))
+router.route('/fetch_following_post/:username').get(require('./todos/fetch_following_post'))
 
 // router.route('/single/:todo_id').get(require('./todos/single'));
 // //two parameters to update
