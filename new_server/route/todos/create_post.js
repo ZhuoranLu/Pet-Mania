@@ -15,6 +15,12 @@ console.log(date)
 console.log(image)
   Promise.resolve()
   .then(() => {
+    return get_POID();
+  })
+  .then((data) => {
+    POID = data[0].max_poid + 1
+  })
+  .then(() => {
     return get_result(date,image,text,POID,postBy);
   })
   .then((data) => {
@@ -24,6 +30,10 @@ console.log(image)
     sendError(res, err);
   });
 };
+function get_POID() {
+  return todoDao.get_POID({
+  });
+}
 
 function get_result(date,image,text,POID,postBy) {
   return todoDao.create_post({

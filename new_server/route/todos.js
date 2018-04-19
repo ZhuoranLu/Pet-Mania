@@ -45,6 +45,7 @@ router.route('/fetch_profile_post/:username').get(require('./todos/fetch_profile
 router.route('/fetch_following_post/:username').get(require('./todos/fetch_following_post'))
 router.route('/get_user_info/:username').get(require('./todos/get_user_info'))
 router.route('/search_exact_is/:from/:where/:content').get(require('./todos/search_exact_is'))
+router.route('/get_POID').get(require('./todos/get_POID'))
 // router.route('/single/:todo_id').get(require('./todos/single'));
 // //two parameters to update
 // router.route('/update/:todo_id/:todo_id2').put(require('./todos/update'));
