@@ -9,8 +9,8 @@ module.exports = (req, res) => {
   const date = req.params.date;
   const image = req.body.image;
   const text = req.body.text;
-  const POID = req.params.POID;
   const postBy = req.params.postBy;
+  var POID = 0;
 console.log(date)
 console.log(image)
   Promise.resolve()
@@ -18,9 +18,11 @@ console.log(image)
     return get_POID();
   })
   .then((data) => {
-    POID = data[0].max_poid + 1
+    POID = data[0].max_poid + 1;
+    return POID;
   })
-  .then(() => {
+  .then((POID) => {
+    console.log(POID)
     return get_result(date,image,text,POID,postBy);
   })
   .then((data) => {
@@ -30,6 +32,7 @@ console.log(image)
     sendError(res, err);
   });
 };
+
 function get_POID() {
   return todoDao.get_POID({
   });

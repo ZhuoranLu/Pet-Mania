@@ -40,7 +40,7 @@ router.route('/update_following/:follower_username/:followee_username').post(req
 router.route('/update_likedPOID/:username/:likedPOID').post(require('./todos/update_likedPOID'))
 router.route('/add_user').post(require('./todos/add_user'))
 router.route('/update_user_info/:username/:column/:new_value').put(require('./todos/update_user_info'))
-router.route('/create_post/:date/:POID/:postBy').post(require('./todos/create_post'))
+router.route('/create_post/:date/:postBy').post(require('./todos/create_post'))
 router.route('/fetch_profile_post/:username').get(require('./todos/fetch_profile_post'))
 router.route('/fetch_following_post/:username').get(require('./todos/fetch_following_post'))
 router.route('/get_user_info/:username').get(require('./todos/get_user_info'))
