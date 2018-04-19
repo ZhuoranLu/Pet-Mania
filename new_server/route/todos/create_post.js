@@ -7,17 +7,18 @@ const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
   const date = req.params.date;
-  const image = req.params.image;
+  const image = req.body.image;
   const text = req.body.text;
-  const POID = req.body.POID;
+  const POID = req.params.POID;
   const postBy = req.params.postBy;
-
+console.log(date)
+console.log(image)
   Promise.resolve()
   .then(() => {
     return get_result(date,image,text,POID,postBy);
   })
   .then((data) => {
-    
+    data:data
   })
   .catch(err => {
     sendError(res, err);
@@ -26,11 +27,11 @@ module.exports = (req, res) => {
 
 function get_result(date,image,text,POID,postBy) {
   return todoDao.create_post({
-  date: req.body.date,
-  image: req.body.image,
-  text:req.body.text,
-  POID:req.body.POID,
-  postBy:req.body.postBy
+  date: date,
+  image: image,
+  text: text,
+  POID: POID,
+  postBy: postBy
 
   });
 
