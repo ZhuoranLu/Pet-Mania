@@ -9,7 +9,7 @@ const cp = require('child_process')
 module.exports = (req, res) => {
   Promise.resolve()
   .then(() => {
-    cp.exec('python ./cat_classifier/face_detection.py', (err, stdout,stderr) => {
+    cp.exec('python2 ../../cat_classifier/face_detection.py ragdoll.jpeg', (err, stdout,stderr) => {
 
     if (err)
       console.log('stderr',err);
