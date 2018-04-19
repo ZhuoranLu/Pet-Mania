@@ -26,7 +26,9 @@ console.log(image)
     return get_result(date,image,text,POID,postBy);
   })
   .then((data) => {
-    data:data
+    res.status(200).send({
+      data: data
+    })
   })
   .catch(err => {
     sendError(res, err);
