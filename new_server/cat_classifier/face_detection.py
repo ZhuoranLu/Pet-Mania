@@ -65,7 +65,7 @@ def process_images(image,image_name):
 img = cv2.imread("./cat_classifier/test_original_pictures/"+ image_filename) 
 if img is None:
 	# img = cv2.imread("./test_original_pictures/"+ image_filename) 
-	print("picture error")
+	print("there is no picture")
 	exit(2)
 # print("./cat_classifier/test_original_pictures/"+ image_filename)
 # cv2.imshow('image',img)

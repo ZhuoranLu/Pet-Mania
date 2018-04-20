@@ -20,8 +20,9 @@ module.exports = (req, res) => {
     // }else{
     //   return 0;
     // }
+    console.log(stdout);
     if(err){
-      if(err.code){
+      if(err.code == 1){
         res.status(200).send({
           message: "get face"
         })
