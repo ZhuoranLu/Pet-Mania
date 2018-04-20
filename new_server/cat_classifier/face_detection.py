@@ -9,7 +9,7 @@ image_filename = sys.argv[-1]
 print(image_filename)
 # print("zhe li shi ni ma de python")
 
-catPath = "../../cat_classifier/haarcascade_frontalcatface.xml"
+catPath = "./cat_classifier/haarcascade_frontalcatface.xml"
 faceCascade = cv2.CascadeClassifier(catPath)
 
 
@@ -47,7 +47,7 @@ def process_images(image,image_name):
 
 			crop_image = image[y+1:y+cop_len, x+1:x+cop_len]
 
-			cv2.imwrite("../../cat_classifier/test_face_pictures/"+image_name,crop_image)
+			cv2.imwrite("./cat_classifier/test_face_pictures/"+image_name,crop_image)
 		# cv2.putText(image,'laozhu',(x,y-7), 3, 1.2, (0, 255, 0), 2, cv2.LINE_AA)
 			cv2.rectangle(image, (x, y), (x+w, y+h), (0, 0, 255), 2)
 			return True
@@ -62,7 +62,7 @@ def process_images(image,image_name):
 
 
 # picture = "./bengal.jpeg"
-img = cv2.imread("../../cat_classifier/test_original_pictures/"+ image_filename) 
+img = cv2.imread("./cat_classifier/test_original_pictures/"+ image_filename) 
 if img is None:
 	# img = cv2.imread("./test_original_pictures/"+ image_filename) 
 	print("picture error")

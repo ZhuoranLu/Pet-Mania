@@ -47,7 +47,8 @@ router.route('/get_user_info/:username').get(require('./todos/get_user_info'))
 router.route('/search_exact_is/:from/:where/:content').get(require('./todos/search_exact_is'))
 router.route('/get_POID').get(require('./todos/get_POID'))
 router.route('/count_Post/:postBy').get(require('./todos/count_Post'))
-router.route('/face_detection').get(require('./todos/face_detection'))
+router.route('/face_detection/:picture_name').get(require('./todos/face_detection'))
+router.route('/face_classifier/:picture_name').get(require('./todos/face_classifier'))
 
 // router.route('/single/:todo_id').get(require('./todos/single'));
 // //two parameters to update

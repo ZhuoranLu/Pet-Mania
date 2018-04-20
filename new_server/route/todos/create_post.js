@@ -11,8 +11,10 @@ module.exports = (req, res) => {
   const text = req.body.text;
   const postBy = req.params.postBy;
   var POID = 0;
-console.log(date)
-console.log(image)
+// console.log(date)
+// console.log(image)
+
+
   Promise.resolve()
   .then(() => {
     return get_POID();
@@ -23,6 +25,18 @@ console.log(image)
   })
   .then((POID) => {
     console.log(POID)
+
+    // var storageRef = firebase.storage().ref().child("Whatever your path is in Firebase Storage");
+    //   var imageRef = "Your path in the Realtime Database";
+
+    //   storageRef.getDownloadURL().then(function(url) {
+    //     imageRef.child("image").set(url);
+    // }); 
+
+    // var task = storageRef.putString(image, 'base64').then(function(snapshot) {
+    //      console.log('Uploaded a base64 string!');
+    // });
+
     return get_result(date,image,text,POID,postBy);
   })
   .then((data) => {

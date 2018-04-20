@@ -12,12 +12,12 @@ from keras.layers import Conv2D, MaxPooling2D
 picname = sys.argv[-1]
 
 def prepicture(picname):
-    img = Image.open('../../cat_classifier/test_face_pictures/' + picname)
+    img = Image.open('./cat_classifier/test_face_pictures/' + picname)
     new_img = img.resize((100, 100), Image.BILINEAR)
-    new_img.save(os.path.join('../../cat_classifier/test_face_pictures/', os.path.basename(picname)))
+    new_img.save(os.path.join('./cat_classifier/test_face_pictures/', os.path.basename(picname)))
 
 def read_image2(filename):
-    img = Image.open('../../cat_classifier/test_face_pictures/' + filename).convert('RGB')
+    img = Image.open('./cat_classifier/test_face_pictures/' + filename).convert('RGB')
     return np.array(img)
 
 
@@ -69,7 +69,7 @@ def testcat(picname):
     sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
     model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
-    model.load_weights('../../cat_classifier/oxford_cat_face_weights.h5')
+    model.load_weights('./cat_classifier/oxford_cat_face_weights.h5')
     classes = model.predict_classes(x_test)
     probability = model.predict(x_test)
     probability *= 1000
@@ -85,14 +85,16 @@ def testcat(picname):
     return classes[0]
 
 def predict(filename):
- 	result = f(testcat(filename))
- 	print("这只猫本来是",filename.split(".")[0])
- 	print("我xjb猜他是",result)
+    return testcat(filename)
+ 	# print("这只猫本来是",filename.split(".")[0])
+ 	# print("我xjb猜他是",result)
 
 
     # print(filename)
 result = predict(picname)
-sys.exit(result)
+print(result)
+# print(f(result))
+# exit(result)
 
 # predict("布偶1.jpeg")
 # predict("布偶2.jpeg")

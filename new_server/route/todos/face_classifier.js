@@ -10,7 +10,7 @@ module.exports = (req, res) => {
   const picture_name = req.params.picture_name;
   Promise.resolve()
   .then(() => {
-    const command = 'python2 ./cat_classifier/face_detection.py '+ picture_name;
+    const command = 'python ./cat_classifier/classifier.py '+ picture_name;
     // console.log(command)
     var result = cp.exec(command, (err, stdout,stderr) => {
 
@@ -20,21 +20,46 @@ module.exports = (req, res) => {
     // }else{
     //   return 0;
     // }
-    if(err){
-      if(err.code){
+    console.log(stdout)
+    if(stdout){
+      var result = parseInt(stdout,10);
+      if(result <= 6 && result >= 0){
         res.status(200).send({
-          message: "get face"
-        })
+        message: "successfully classified",
+        data: parseInt(stdout, 10)
+      })
       }else{
         res.status(404).send({
-          message: "no face"
+          message: "error in classification"
         })
       }
     }else{
-      res.status(404).send({
-        message: "error in detection"
-      })
+      if(err){
+        res.status(404).send({
+          message: "error in classification"
+        })
+      }
     }
+
+    // if(stdout){
+    //   if(err.code < 7 && err.code >=0){
+    //     console.log("mei kong wo cao nima ")
+    //     console.log(err.code)
+    //     res.status(200).send({
+    //       message: "got it",
+    //       data: err.code
+    //   })
+    //   }else{
+    //       res.status(404).send({
+    //       message:"error in classification"
+    //     })
+    //   }
+
+    // }else{
+    //     res.status(404).send({
+    //       message:"error in classification"
+    //     })
+    // }
   })
   })
   // .then((has_face) => {
