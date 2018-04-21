@@ -10,7 +10,9 @@ module.exports = (param) => {
     const sql = "SELECT User.name AS name, User.region AS region, User.petName AS petName "
     			+ "FROM User " 
     			+ "WHERE username = ? "
+    			+ " UNION "
+    			+ " SELECT COUNT(POID) FROM Post WHERE postBy = ?"
     console.log(sql);
-    return conn.queryAsync(sql, [username]);
+    return conn.queryAsync(sql, [username,username]);
   });
 };
