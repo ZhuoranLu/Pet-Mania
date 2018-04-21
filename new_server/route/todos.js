@@ -50,7 +50,7 @@ router.route('/count_Post/:postBy').get(require('./todos/count_Post'))
 router.route('/face_detection/:picture_name').get(require('./todos/face_detection'))
 router.route('/face_classifier/:picture_name').get(require('./todos/face_classifier'))
 router.route('/get_image_firebase_url').get(require('./todos/get_image_firebase_url'))
-router.route('/delete_post/:POID').get(require('./todos/delete_post'))
+router.route('/delete_post/:POID').delete(require('./todos/delete_post'))
 
 // router.route('/single/:todo_id').get(require('./todos/single'));
 // //two parameters to update
