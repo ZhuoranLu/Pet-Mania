@@ -30,7 +30,7 @@ def process_images(image,image_name):
     		gray,
     		scaleFactor= 1.02,
     		minNeighbors=3,
-    		minSize=(80, 80),
+    		minSize=(100, 100),
     		flags=cv2.CASCADE_SCALE_IMAGE
 		)
 		print(faces)
@@ -63,13 +63,18 @@ def process_images(image,image_name):
 
 # picture = "./bengal.jpeg"
 img = cv2.imread("./cat_classifier/test_original_pictures/"+ image_filename) 
+fix_image = cv2.resize(img,(500, 500), interpolation = cv2.INTER_CUBIC)
+cv2.imwrite("./cat_classifier/test_original_pictures/"+ image_filename,fix_image)
+
+
 if img is None:
 	# img = cv2.imread("./test_original_pictures/"+ image_filename) 
 	print("there is no picture")
 	exit(2)
+
 # print("./cat_classifier/test_original_pictures/"+ image_filename)
 # cv2.imshow('image',img)
-result = process_images(img,"face_"+image_filename) 
+result = process_images(fix_image,"face_"+image_filename) 
 
 if result is True:
 	sys.exit(1)
