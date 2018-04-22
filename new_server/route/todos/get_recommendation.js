@@ -40,10 +40,10 @@ module.exports = (req, res) => {
     }
     return breedList;
   })
-  .then((poid_arr) => {
+  .then((breedList) => {
     console.log(poid_arr)
     res.status(200).send({
-      data: poid_arr
+      data: breedList
     })
   })
   .catch(err => {
