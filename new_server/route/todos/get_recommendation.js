@@ -26,9 +26,14 @@ module.exports = (req, res) => {
     var i = 0;
     var breedList = []
     for(i;i<poid_arr.length;i++){
-      var POID;
-      var breed = get_breed(POID);
-      console.log(breed[0].breed);
+      var POID = poid_arr[i];
+      console.log(POID);
+      var temp = get_breed(POID);
+      if(temp[0]){
+        console.log(temp[0].username);
+        var temp1 = temp[0].username;
+        var breed = get_breed_step2(temp1)
+      }
     }
     return poid_arr;
   })
@@ -50,8 +55,14 @@ function get_favouriate(username) {
 }
 function get_breed(POID) {
   // console.log(username)
-  return todoDao.getbreed({
+  return todoDao.get_breed({
     POID: POID
+  });
+}
+function get_breed_step2(temp1) {
+  // console.log(username)
+  return todoDao.get_breed({
+    temp1:temp1
   });
 }
 

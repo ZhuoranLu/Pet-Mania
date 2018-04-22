@@ -13,14 +13,14 @@ module.exports = (param) => {
 // LIMIT 20
 
   return Promise.using(db(), conn => {
-  	var POID = param.POID;
-    const sql = "SELECT postBy AS username FROM Post WHERE POID = " + POID;
-    console.log(sql);
+  	var POID = param.temp1;
+    // const sql = "SELECT postBy AS username FROM Post WHERE POID = " + POID;
+    // console.log(sql);
     return conn.queryAsync(sql, []);
     // console.log("???????????????????11111")
     // var username = data[0].username;
-    // const sql1 = "SELECT petBreed AS breed FROM User WHERE username = ?"
+    const sql = "SELECT petBreed AS breed FROM User WHERE username = ?"
     // console.log("???????????????????")
-    // return conn.queryAsync(sql1, [username]);
+    return conn.queryAsync(sql, [temp1]);
   });
 };
