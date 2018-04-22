@@ -28,6 +28,7 @@ module.exports = (req, res) => {
     for(i;i<poid_arr.length;i++){
       var POID;
       var breed = get_breed(POID);
+      console.log(breed[0].breed);
     }
     return poid_arr;
   })

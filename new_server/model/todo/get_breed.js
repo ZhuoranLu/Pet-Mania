@@ -13,8 +13,11 @@ module.exports = (param) => {
 // LIMIT 20
 
   return Promise.using(db(), conn => {
-    const sql = "SELECT MAX(POID) AS most_liked_POID FROM Post";
-    console.log(sql);
-    return conn.queryAsync(sql, []);
+  	var POID = param.POID;
+    const sql = "SELECT postBy AS username FROM Post WHERE POID = " + POID;
+    var data =  conn.queryAsync(sql, []);
+    var username = data[0].username;
+    const sql = "SELECT petBreed AS breed FROM User WHERE username = ?"
+    return conn.queryAsync(sql, [username]);
   });
 };
