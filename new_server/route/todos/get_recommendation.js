@@ -10,7 +10,7 @@ module.exports = (req, res) => {
 
   Promise.resolve(username)
   .then((username) => {
-    return get_likedPOID(username)
+    return get_likedPOID(username) // get POID liked by the user
   })
   .then((data)=>{
     var poid_arr = []
@@ -23,6 +23,15 @@ module.exports = (req, res) => {
   //   console.log(data)
   // })
   .then((poid_arr) => {
+    var i = 0;
+    var breedList = []
+    for(i;i<poid_arr.length;i++){
+      var POID;
+      var breed = get_breed(POID);
+    }
+    return poid_arr;
+  })
+  .then((poid_arr) => {
     console.log(poid_arr)
     res.status(200).send({
       data: poid_arr
@@ -32,13 +41,24 @@ module.exports = (req, res) => {
     sendError(res, err);
   });
 };
+function get_favouriate(username) {
+  // console.log(username)
+  return todoDao.get_favouriate({
+    username: username
+  });
+}
+function get_breed(POID) {
+  // console.log(username)
+  return todoDao.getbreed({
+    POID: POID
+  });
+}
 
 function get_result(username) {
   // console.log(username)
   return todoDao.get_user_following({
     username: username
   });
-
 }
 
 function get_likedPOID(username){
