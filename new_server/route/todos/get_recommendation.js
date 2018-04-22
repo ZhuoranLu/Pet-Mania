@@ -33,9 +33,12 @@ module.exports = (req, res) => {
         console.log(temp[0].username);
         var temp1 = temp[0].username;
         var breed = get_breed_step2(temp1)
+        if(breed[0]){
+          breedList.push(breed[0].breed);
+        }
       }
     }
-    return poid_arr;
+    return breedList;
   })
   .then((poid_arr) => {
     console.log(poid_arr)
