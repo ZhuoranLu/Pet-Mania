@@ -56,6 +56,7 @@ router.route('/get_recommendation/:username').get(require('./todos/get_recommend
 router.route('/update_likes/:POID/:likes').post(require('./todos/update_likes'))
 router.route('/isLike/:username/:POID').get(require('./todos/isLike'))
 router.route('/isFollow/:follower/:followee').get(require('./todos/isFollow'))
+router.route('/unfollow/:follower/:followee').delete(require('./todos/unfollow'))
 router.route('/update_following/:follower_username/:followee_username').post(require('./todos/update_following'))
 router.route('/judge_following_relation/:follower/:followee').get(require('./todos/judge_following_relation'))
 // router.route('/single/:todo_id').get(require('./todos/single'));
