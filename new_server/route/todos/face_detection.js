@@ -28,12 +28,12 @@ module.exports = (req, res) => {
         })
       }else{
         res.status(404).send({
-          message: "no face"
+          message: "error in face_detection"
         })
       }
     }else{
       res.status(404).send({
-        message: "error in detection"
+        message: "there is no face"
       })
     }
   })

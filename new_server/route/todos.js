@@ -52,6 +52,8 @@ router.route('/face_classifier/:picture_name').get(require('./todos/face_classif
 router.route('/get_image_firebase_url').get(require('./todos/get_image_firebase_url'))
 router.route('/delete_post/:POID').delete(require('./todos/delete_post'))
 router.route('/search_keyword/:keyword').get(require('./todos/search_keyword'))
+router.route('/get_recommendation/:username').get(require('./todos/get_recommendation'))
+router.route('/judge_following_relation/:follower/:followee').get(require('./todos/judge_following_relation'))
 // router.route('/single/:todo_id').get(require('./todos/single'));
 // //two parameters to update
 // router.route('/update/:todo_id/:todo_id2').put(require('./todos/update'));
