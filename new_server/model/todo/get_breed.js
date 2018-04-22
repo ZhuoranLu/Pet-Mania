@@ -14,7 +14,7 @@ module.exports = (param) => {
 
   return Promise.using(db(), conn => {
   	var POID = param.POID;
-    const sql = "SELECT postBy AS username FROM Post WHERE POID = " + POID;
+    const sql = "SELECT postBy FROM Post WHERE POID = " + POID;
     console.log(sql);
     return conn.queryAsync(sql, []);
     // console.log("???????????????????11111")

@@ -7,7 +7,6 @@ const sendError = require('../../helper/sendError');
 
 module.exports = (req, res) => {
   const username = req.params.username;
-
   Promise.resolve(username)
   .then((username) => {
     return get_likedPOID(username) // get POID liked by the user
@@ -27,11 +26,16 @@ module.exports = (req, res) => {
     var breedList = []
     for(i;i<poid_arr.length;i++){
       var POID = poid_arr[i];
+      console.log("poid")
       console.log(POID);
+      console.log("----end")
       var temp = get_breed(POID);
+      console.log(temp);
+      console.log(temp[1]["postBy"])
       if(temp[0]){
-        console.log(temp[0].username);
-        var temp1 = temp[0].username;
+        console.log("-----");
+        console.log(temp[0]["postBy"]);
+        var temp1 = temp[0]["postBy"];
         var breed = get_breed_step2(temp1)
         if(breed[0]){
           breedList.push(breed[0].breed);
