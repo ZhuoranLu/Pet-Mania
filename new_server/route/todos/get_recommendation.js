@@ -41,7 +41,7 @@ module.exports = (req, res) => {
     return breedList;
   })
   .then((breedList) => {
-    console.log(poid_arr)
+    console.log(breedList)
     res.status(200).send({
       data: breedList
     })

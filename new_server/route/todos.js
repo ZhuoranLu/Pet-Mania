@@ -38,6 +38,7 @@ router.route('/login_get_password/:username').get(require('./todos/login_get_pas
 router.route('/login_process/:username/:password').get(require('./todos/login_process'))
 router.route('/update_following/:follower_username/:followee_username').post(require('./todos/update_following'))
 router.route('/update_likedPOID/:username/:likedPOID').post(require('./todos/update_likedPOID'))
+router.route('/delete_likedPOID/:username/:likedPOID').delete(require('./todos/delete_likedPOID'))
 router.route('/add_user').post(require('./todos/add_user'))
 router.route('/update_user_info/:username/:column/:new_value').put(require('./todos/update_user_info'))
 router.route('/create_post/:date/:postBy').post(require('./todos/create_post'))
@@ -53,6 +54,7 @@ router.route('/get_image_firebase_url').get(require('./todos/get_image_firebase_
 router.route('/delete_post/:POID').delete(require('./todos/delete_post'))
 router.route('/search_keyword/:keyword').get(require('./todos/search_keyword'))
 router.route('/get_recommendation/:username').get(require('./todos/get_recommendation'))
+router.route('/update_likes/:POID/:likes').post(require('./todos/update_likes'))
 router.route('/judge_following_relation/:follower/:followee').get(require('./todos/judge_following_relation'))
 // router.route('/single/:todo_id').get(require('./todos/single'));
 // //two parameters to update
