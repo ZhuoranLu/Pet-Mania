@@ -24,9 +24,8 @@ module.exports = (req, res) => {
 };
 
 function get_result(follower,followee) {
-  return todoDao.fetch_following_post({
+  return todoDao.judge_following_relation({
     follower: follower,
     followee: followee
   });
-
 }

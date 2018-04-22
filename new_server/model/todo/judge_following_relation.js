@@ -10,7 +10,7 @@ module.exports = (param) => {
 	console.log(follower)
 	console.log(followee)
   	return Promise.using(db(), conn => {
-    const sql = "select COUNT(*) from following where (follower = ? AND followee = ?)";
+    const sql = "select COUNT(*) AS 'count' from following where (follower = ? AND followee = ?)";
     return conn.queryAsync(sql, [follower,followee]);
   });
 };
