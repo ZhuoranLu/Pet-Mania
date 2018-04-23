@@ -34,7 +34,7 @@ module.exports = (param) => {
   //   INSERT INTO table_name (column1, column2, column3, ...)
   //   VALUES (value1, value2, value3, ...);
   return Promise.using(db(), conn => {
-    const sql = "INSERT INTO User (username,password,DOB,gender,createDate,name,region,following,petBreed,petKind,petGender,petName) VALUES ("
+    const sql = "INSERT INTO User (username,password,DOB,gender,createDate,name,region,petBreed,petKind,petGender,petName) VALUES ("
               + "'" +username + "',"
               + "'" +password + "',"
               + "'" + DOB + "',"
@@ -42,12 +42,11 @@ module.exports = (param) => {
               + "'" + createDate + "',"
               + "'" +name + "',"
               + "'" +region + "',"
-              + "'" +following + "',"
               + "'" +petBreed + "',"
               + "'" +petKind + "',"
               + "'" +petGender+ "',"
               + "'" +petName+ "')"
     console.log(sql);
-    return conn.queryAsync(sql, [username,password,DOB,gender,createDate,name,region,following,petBreed,petKind,petGender,petName]);
+    return conn.queryAsync(sql, [username,password,DOB,gender,createDate,name,region,petBreed,petKind,petGender,petName]);
   });
 };
