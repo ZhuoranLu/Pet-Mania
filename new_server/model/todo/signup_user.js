@@ -18,7 +18,7 @@ module.exports = (param) => {
   const petBreed = param.petBreed;
   const petGender = param.petGender;
   const createDate = param.createDate;
-
+  const head = param.head;
   // username: username,
   //   password: password
   //   DOB: DOB,
@@ -34,7 +34,7 @@ module.exports = (param) => {
   //   INSERT INTO table_name (column1, column2, column3, ...)
   //   VALUES (value1, value2, value3, ...);
   return Promise.using(db(), conn => {
-    const sql = "INSERT INTO User (username,password,DOB,gender,createDate,name,region,petBreed,petKind,petGender,petName) VALUES ("
+    const sql = "INSERT INTO User (username,password,DOB,gender,createDate,name,region,petBreed,petKind,petGender,petName,head) VALUES ("
               + "'" +username + "',"
               + "'" +password + "',"
               + "'" + DOB + "',"
@@ -45,8 +45,9 @@ module.exports = (param) => {
               + "'" +petBreed + "',"
               + "'" +petKind + "',"
               + "'" +petGender+ "',"
-              + "'" +petName+ "')"
+              + "'" +petName+ "',"
+              + "'" +head+ "')"
     console.log(sql);
-    return conn.queryAsync(sql, [username,password,DOB,gender,createDate,name,region,petBreed,petKind,petGender,petName]);
+    return conn.queryAsync(sql, [username,password,DOB,gender,createDate,name,region,petBreed,petKind,petGender,petName,head]);
   });
 };
