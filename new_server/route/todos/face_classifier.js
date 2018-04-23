@@ -20,7 +20,8 @@ module.exports = (req, res) => {
     // }else{
     //   return 0;
     // }
-    console.log(stdout)
+    console.log("std: " +stdout)
+    console.log("err: "+ err)
     if(stdout){
       var result = parseInt(stdout,10);
       if(result <= 6 && result >= 0){
@@ -35,6 +36,12 @@ module.exports = (req, res) => {
       }
     }else{
       if(err){
+        if(err.code == 1){
+          res.status(200).send({
+            message: "successfully classified",
+            data: parseInt(stdout, 10)
+          })
+        }}else{
         res.status(404).send({
           message: "error in classification"
         })

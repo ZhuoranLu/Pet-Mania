@@ -10,7 +10,7 @@ module.exports = (req, res) => {
   const picture_name = req.params.picture_name;
   Promise.resolve()
   .then(() => {
-    const command = 'python2 ./cat_classifier/face_detection.py '+ picture_name;
+    const command = 'python ./cat_classifier/face_detection.py '+ picture_name;
     // console.log(command)
     var result = cp.exec(command, (err, stdout,stderr) => {
 
@@ -21,6 +21,7 @@ module.exports = (req, res) => {
     //   return 0;
     // }
     console.log(stdout);
+    // console.log(err)
     if(err){
       if(err.code == 1){
         res.status(200).send({
