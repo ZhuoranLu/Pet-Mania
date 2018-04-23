@@ -46,8 +46,8 @@ module.exports = (param) => {
               + "'" +petKind + "',"
               + "'" +petGender+ "',"
               + "'" +petName+ "',"
-              + "'" +head+ "')"
+              + " ? )"
     console.log(sql);
-    return conn.queryAsync(sql, [username,password,DOB,gender,createDate,name,region,petBreed,petKind,petGender,petName,head]);
+    return conn.queryAsync(sql, [head]);
   });
 };
