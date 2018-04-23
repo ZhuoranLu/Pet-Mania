@@ -47,7 +47,7 @@ module.exports = (req, res) => {
     }
   })
   .then(() => {
-    return addTodo(username,password,DOB,gender,name,region,following,petName,petKind,petBreed,petGender,createDate);
+    return addTodo(username,password,DOB,gender,name,region,petName,petKind,petBreed,petGender,createDate);
   })
   .then((data) => {
     res.status(200).send({
@@ -59,7 +59,7 @@ module.exports = (req, res) => {
   });
 };
 
-function addTodo(username,password,DOB,gender,name,region,following,petName,petKind,petBreed,petGender,createDate) {
+function addTodo(username,password,DOB,gender,name,region,petName,petKind,petBreed,petGender,createDate) {
 
   return todoDao.signup_user({
     username: username,
@@ -68,7 +68,6 @@ function addTodo(username,password,DOB,gender,name,region,following,petName,petK
     gender: gender,
     name: name,
     region: region,
-    following:following,
     petName: petName,
     petKind: petKind,
     petBreed: petBreed,
