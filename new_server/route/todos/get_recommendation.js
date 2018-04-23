@@ -31,7 +31,7 @@ module.exports = (req, res) => {
       console.log("----end")
       var temp = get_breed(POID);
       console.log(temp);
-      console.log(temp[1]["postBy"])
+      console.log(temp[0]["postBy"])
       if(temp[0]){
         console.log("-----");
         console.log(temp[0]["postBy"]);
