@@ -15,8 +15,8 @@ const local = {
   connectionLimit:50,
   host: "192.17.90.133",
   // host: "66.253.130.27",
-  user: "servernotfound_wenxin",
-  password: "wenxinquanyuzhoudiyi",
+  user: "servernotfound_test",
+  password: "laozhuquanxiaodi1",
   database: "servernotfound_data"
 };
 

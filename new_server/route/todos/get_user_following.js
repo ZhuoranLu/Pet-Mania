@@ -9,6 +9,7 @@ module.exports = (req, res) => {
   const username = req.params.username;
   Promise.resolve()
   .then(() => {
+    console.log("???")
     return get_result(username);
   })
   .then((data) => {

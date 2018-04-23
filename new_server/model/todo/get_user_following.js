@@ -7,7 +7,7 @@ const db = require('../../config/db');
 module.exports = (param) => {
 	const username = param.username;
   return Promise.using(db(), conn => {
-    // console.log("wocaonima");
+    console.log("wocaonima");
     const sql = "SELECT followee FROM following WHERE follower = ?";
     console.log(sql);
     return conn.queryAsync(sql, [username]);
