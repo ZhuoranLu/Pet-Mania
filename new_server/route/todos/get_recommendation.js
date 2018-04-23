@@ -10,82 +10,20 @@ module.exports = (req, res) => {
   var poid_arr = []
   Promise.resolve(username)
   .then((username) => {
-    return get_likedPOID(username) // get POID liked by the user
+    return get_rec(username) // get POID liked by the user
   })
-  .then((data)=>{
-    console.log(data)
-    for(var index in data){
-      poid_arr.push(data[index]["likedPOID"])
-    }
-    return poid_arr
-  })
-  // .then((data)=>{
-  //   console.log(data)
-  // })
-  .then((poid_arr) => {
-    // var i = 0;
-    // var postByList = []
-    // for(i;i<poid_arr.length;i++){
-    //   var POID = poid_arr[i];
-    //   console.log("poid")
-    //   console.log(POID);
-    //   console.log("----end")
-    //   var temp = get_breed(POID);
-    //   var promise = new Promise(function(resolve, reject) { ... }); 
-    //   console.log("这步走到了没");
-    //   // console.log(temp.data[0]["postBy"])
-    //   console.log("这步走到了没22");
-    //   postByList.push(temp);
-    //   // if(temp[0]){
-    //   //   console.log("-----");
-    //   //   console.log(temp[0]["postBy"]);
-    //   //   var temp1 = temp[0]["postBy"];
-    //   //   var breed = get_breed_step2(temp1)
-    //   //   if(breed[0]){
-    //   //     breedList.push(breed[0].breed);
-    //   //   }
-    //   // }
-    // }
-    // console.log("走完")
-    // return postByList;
-  })
-  .then((postByList) => {
+  .then((data) => {
     res.status(200).send({
-        msg:"haha"
+        data:data
     })
   })
   .catch(err => {
     sendError(res, err);
   });
 };
-function get_favouriate(username) {
+function get_rec(username) {
   // console.log(username)
-  return todoDao.get_favouriate({
-    username: username
-  });
-}
-function get_breed(POID) {
-  // console.log(username)
-  return todoDao.get_breed({
-    POID: POID
-  });
-}
-function get_breed_step2(temp1) {
-  // console.log(username)
-  return todoDao.get_breed({
-    temp1:temp1
-  });
-}
-
-function get_result(username) {
-  // console.log(username)
-  return todoDao.get_user_following({
-    username: username
-  });
-}
-
-function get_likedPOID(username){
-  return todoDao.get_user_likedPOID({
+  return todoDao.get_recommendation({
     username: username
   });
 }
