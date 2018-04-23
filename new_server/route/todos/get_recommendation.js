@@ -13,8 +13,24 @@ module.exports = (req, res) => {
     return get_rec(username) // get POID liked by the user
   })
   .then((data) => {
+    if(data[0]){
+      return data;
+    }
+    else{
+      return get_result(username);
+    }
+  })
+  .then((data) => {
+    if(data[0].POID){
+      res.status(200).send({
+        data: data
+    })
+    }
+    return get_post_byBreed(data[0].petBreed);
+  })
+  .then((data) => {
     res.status(200).send({
-        data:data
+        data: data
     })
   })
   .catch(err => {
@@ -26,4 +42,16 @@ function get_rec(username) {
   return todoDao.get_recommendation({
     username: username
   });
+}
+function get_result(username) {
+  return todoDao.fake_recommendation({
+    username:username
+  });
+
+}
+function get_post_byBreed(breed) {
+  return todoDao.get_post_byBreed({
+    breed:breed
+  });
+
 }
