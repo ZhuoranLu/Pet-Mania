@@ -16,6 +16,7 @@ module.exports = (req, res) => {
   const petKind =req.body.petKind;
   const petBreed = req.body.petBreed;
   const petGender = req.body.petGender;
+  const head = req.body.head;
   const following = ""; //这边要改
   //----Create current date
   var today = new Date();
@@ -47,7 +48,7 @@ module.exports = (req, res) => {
     }
   })
   .then(() => {
-    return addTodo(username,password,DOB,gender,name,region,petName,petKind,petBreed,petGender,createDate);
+    return addTodo(username,password,DOB,gender,name,region,petName,petKind,petBreed,petGender,createDate,head);
   })
   .then((data) => {
     res.status(200).send({
@@ -59,7 +60,7 @@ module.exports = (req, res) => {
   });
 };
 
-function addTodo(username,password,DOB,gender,name,region,petName,petKind,petBreed,petGender,createDate) {
+function addTodo(username,password,DOB,gender,name,region,petName,petKind,petBreed,petGender,createDate,head) {
 
   return todoDao.signup_user({
     username: username,
@@ -72,7 +73,8 @@ function addTodo(username,password,DOB,gender,name,region,petName,petKind,petBre
     petKind: petKind,
     petBreed: petBreed,
     petGender: petGender,
-    createDate: createDate
+    createDate: createDate,
+    head: head
   })
 }
 function get_result(username) {
