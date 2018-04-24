@@ -63,7 +63,7 @@ router.route('/unfollow/:follower/:followee').delete(require('./todos/unfollow')
 router.route('/fake_recommendation/:username').get(require('./todos/fake_recommendation'))
 router.route('/update_following/:follower_username/:followee_username').post(require('./todos/update_following'))
 router.route('/judge_following_relation/:follower/:followee').get(require('./todos/judge_following_relation'))
-// router.route('/update_all_user_info').post(require('./todos/update_all_user_info'))
+router.route('/update_all_user_info').post(require('./todos/update_all_user_info'))
 // router.route('/single/:todo_id').get(require('./todos/single'));
 // //two parameters to update
 // router.route('/update/:todo_id/:todo_id2').put(require('./todos/update'));
